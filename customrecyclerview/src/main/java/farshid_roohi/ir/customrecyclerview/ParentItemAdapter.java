@@ -22,8 +22,9 @@ public class ParentItemAdapter extends LinearLayout {
 
     public final String TAG = ParentItemAdapter.class.getSimpleName();
 
-    private TextView txtTitle;
-    private boolean  flagVisibilityProgress;
+    private TextView            txtTitle;
+    private boolean             flagVisibilityProgress;
+    private LinearLayoutManager layoutManager;
 
     private ParentItemAdapter parent;
     private ItemAdapter       itemAdapter;
@@ -79,8 +80,8 @@ public class ParentItemAdapter extends LinearLayout {
         RecyclerView recyclerViewItem = view.findViewById(R.id.recyclerView_item);
         this.txtTitle = view.findViewById(R.id.txt_title);
         this.itemAdapter = new ItemAdapter();
-        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
-        recyclerViewItem.setLayoutManager(manager);
+        this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
+        recyclerViewItem.setLayoutManager(this.layoutManager);
         recyclerViewItem.setAdapter(this.itemAdapter);
     }
 
@@ -105,6 +106,9 @@ public class ParentItemAdapter extends LinearLayout {
         return this.itemAdapter;
     }
 
+    public LinearLayoutManager getLayoutManager() {
+        return layoutManager;
+    }
 
     public class ItemAdapter extends BaseAdapterRecyclerView<ItemMainModel> {
 
