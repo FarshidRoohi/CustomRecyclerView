@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <view
+            android:id="@+id/item_recycler"
+            class="farshid_roohi.ir.customrecyclerview.ParentItemAdapter"
+            android:layout_width="match_parent"
+            android:layout_height="170dp" />
+
+        <ProgressBar
+            android:id="@+id/progress_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center|top"/>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
