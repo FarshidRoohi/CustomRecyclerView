@@ -1,4 +1,5 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.sample.customrecyclerview;
+
 
 /**
  * Custom RecyclerView Created by Farshid on 11/8/2017.

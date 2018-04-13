@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 
 import java.util.List;
 
+import farshid_roohi.ir.customrecyclerview.listener.RecyclerItemMainListener;
+
 
 /**
  * Custom RecyclerView Created by Farshid on 11/13/2017.
@@ -45,7 +47,7 @@ public class ItemContainer extends LinearLayout {
     }
 
     public ItemContainerAdapter getAdapterContainer() {
-        return adapterContainer;
+        return this.adapterContainer;
     }
 
     @Override
@@ -66,17 +68,12 @@ public class ItemContainer extends LinearLayout {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.item_container, this);
         //initialize recyclerView
         RecyclerView        recyclerViewRoot = view.findViewById(R.id.recyclerView_root);
-        LinearLayoutManager manager          = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager manager          = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerViewRoot.setLayoutManager(manager);
         this.adapterContainer = new ItemContainerAdapter();
         recyclerViewRoot.setAdapter(this.adapterContainer);
     }
 
 
-    public interface RecyclerItemMainListener {
 
-        void onClickItemParent(ParentItemAdapter parent, int position);
-
-        void onClickItem(ItemMainModel item, int position);
-    }
 }

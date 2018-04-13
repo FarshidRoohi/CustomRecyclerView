@@ -53,7 +53,12 @@ public abstract class BaseAdapterRecyclerView<T> extends
         return this.list;
     }
 
-    public void putItem(T... items) {
+    public RecyclerView.Adapter getAdapter() {
+        return this;
+    }
+
+    @SafeVarargs
+    public final void putItem(T... items) {
         if (this.list == null) {
             this.list = new ArrayList<>();
         }
