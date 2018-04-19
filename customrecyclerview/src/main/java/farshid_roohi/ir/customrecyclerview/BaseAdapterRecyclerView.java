@@ -53,17 +53,11 @@ public abstract class BaseAdapterRecyclerView<T> extends
         return this.list;
     }
 
-    public RecyclerView.Adapter getAdapter() {
-        return this;
-    }
-
-    @SafeVarargs
-    public final void putItem(T... items) {
+    public void putItem(T... items) {
         if (this.list == null) {
             this.list = new ArrayList<>();
         }
         this.list.addAll(new ArrayList<>(Arrays.asList(items)));
-
         notifyDataSetChanged();
     }
 
@@ -106,4 +100,5 @@ public abstract class BaseAdapterRecyclerView<T> extends
         this.list.remove(position);
         notifyDataSetChanged();
     }
+
 }

@@ -11,19 +11,10 @@ import android.widget.LinearLayout;
 
 import java.util.List;
 
-import farshid_roohi.ir.customrecyclerview.listener.RecyclerItemMainListener;
-
-
-/**
- * Custom RecyclerView Created by Farshid on 11/13/2017.
- */
-
-
 public class ItemContainer extends LinearLayout {
 
     private       ItemContainerAdapter     adapterContainer;
     public static RecyclerItemMainListener listener;
-
 
     public ItemContainer(Context context) {
         super(context);
@@ -37,6 +28,7 @@ public class ItemContainer extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
+
     public void setList(List<ParentItemAdapter> list) {
         this.adapterContainer.swapData(list);
 
@@ -47,7 +39,7 @@ public class ItemContainer extends LinearLayout {
     }
 
     public ItemContainerAdapter getAdapterContainer() {
-        return this.adapterContainer;
+        return adapterContainer;
     }
 
     @Override
@@ -57,23 +49,26 @@ public class ItemContainer extends LinearLayout {
     }
 
 
-    public void setListener(RecyclerItemMainListener listener) {
+    public void serListener(RecyclerItemMainListener listener) {
         ItemContainer.listener = listener;
 
     }
-
 
     private void initializeView() {
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.item_container, this);
         //initialize recyclerView
-        RecyclerView        recyclerViewRoot = view.findViewById(R.id.recyclerView_root);
-        LinearLayoutManager manager          = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerViewRoot.setLayoutManager(manager);
+        RecyclerView recyclerViewRoot = view.findViewById(R.id.recyclerView_root);
+        recyclerViewRoot.setScrollContainer(false);
+        recyclerViewRoot.setNestedScrollingEnabled(false);
         this.adapterContainer = new ItemContainerAdapter();
         recyclerViewRoot.setAdapter(this.adapterContainer);
+        recyclerViewRoot.setLayoutManager(new LinearLayoutManager(getContext()
+                ,LinearLayoutManager.VERTICAL,false));
+
     }
 
-
-
+    public interface RecyclerItemMainListener {
+        void onClickItem(ChildModel item, int position);
+    }
 }

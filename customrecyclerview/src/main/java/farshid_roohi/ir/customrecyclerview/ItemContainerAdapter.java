@@ -6,8 +6,10 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
+
+
 /**
- * Custom RecyclerView Created by farshid roohi on 11/28/17.
+ * Easy Shop Created by farshid roohi on 11/28/17.
  */
 
 public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdapter> {
@@ -17,7 +19,7 @@ public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdap
         super(list);
     }
 
-    public ItemContainerAdapter(){
+    public ItemContainerAdapter() {
     }
 
     @Override
@@ -47,7 +49,7 @@ public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdap
         ParentItemAdapter itemRecyclers;
         ProgressBar       progressView;
 
-        public ViewHolder(final View view) {
+        ViewHolder(final View view) {
             super(view);
 
             itemRecyclers = view.findViewById(R.id.item_recycler);

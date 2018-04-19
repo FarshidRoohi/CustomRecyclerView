@@ -5,31 +5,28 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import java.util.List;
 
 
-/**
- * Custom RecyclerView Created by farshid roohi on 11/28/17.
- */
 
-public class ParentItemAdapter<T, Adapter extends BaseAdapterRecyclerView<T>> extends LinearLayout {
+public class ParentItemAdapter extends LinearLayout {
 
     public final String TAG = ParentItemAdapter.class.getSimpleName();
 
-    private TextView            txtTitle;
-    private boolean             flagVisibilityProgress;
-    private LinearLayoutManager layoutManager;
+    private OnClickItemMoreListener listener;
+    private TextView                txtTitle;
+    private TextView           txtMore;
+    private boolean                 flagVisibilityProgress;
 
     private ParentItemAdapter parent;
-    private Adapter           adapter;
+    private ChildItemAdapter  itemAdapter;
     private int               parentPosition;
-    private RecyclerView      recyclerViewItem;
 
     public ParentItemAdapter(Context context) {
         super(context);
@@ -46,20 +43,12 @@ public class ParentItemAdapter<T, Adapter extends BaseAdapterRecyclerView<T>> ex
         initializeView();
     }
 
-    public void setAdapter(Adapter adapter) {
-        this.adapter = adapter;
-        this.recyclerViewItem.setAdapter(this.adapter);
+    public void addAllItem(List<ChildModel> myList) {
+        itemAdapter.swapData(myList);
     }
 
-    public void addAllItem(List<T> list) {
-        if (this.adapter != null) {
-            this.adapter.swapData(list);
-        }
-
-    }
-
-    public void addItem(T item) {
-        this.adapter.putItem(item);
+    public void addItem(ChildModel item) {
+        this.itemAdapter.putItem(item);
     }
 
     public void setParent(ParentItemAdapter parent, int position) {
@@ -79,16 +68,26 @@ public class ParentItemAdapter<T, Adapter extends BaseAdapterRecyclerView<T>> ex
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.c_parent_item, this);
         //initialize recyclerView
-        this.recyclerViewItem = view.findViewById(R.id.recyclerView_item);
+        RecyclerView recyclerViewItem = view.findViewById(R.id.recyclerView_item);
         this.txtTitle = view.findViewById(R.id.txt_title);
-        this.layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true);
-        this.recyclerViewItem.setLayoutManager(this.layoutManager);
-
+        this.txtMore = view.findViewById(R.id.txt_more);
+        this.itemAdapter = new ChildItemAdapter();
+        recyclerViewItem.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
+        recyclerViewItem.setAdapter(this.itemAdapter);
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String value) {
         this.txtTitle.setVisibility(VISIBLE);
-        this.txtTitle.setText(title);
+        this.txtTitle.setText(value);
+    }
+
+    public void setMoreTitle(String value) {
+        this.txtMore.setVisibility(VISIBLE);
+        this.txtMore.setText(value);
+    }
+
+    public void setListenerMore(OnClickItemMoreListener listener) {
+        this.listener = listener;
     }
 
     public void setVisibilityProgressBar(boolean flag) {
@@ -103,11 +102,11 @@ public class ParentItemAdapter<T, Adapter extends BaseAdapterRecyclerView<T>> ex
         return this.txtTitle.getText().toString();
     }
 
-    public Adapter getItemAdapter() {
-        return this.adapter;
+    public ChildItemAdapter getItemAdapter() {
+        return this.itemAdapter;
     }
 
-    public LinearLayoutManager getLayoutManager() {
-        return layoutManager;
+    public interface OnClickItemMoreListener {
+        void onClickItemMore();
     }
 }
