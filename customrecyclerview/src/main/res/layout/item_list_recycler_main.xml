@@ -8,21 +8,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <view
-            android:id="@+id/item_recycler"
-            class="farshid_roohi.ir.customrecyclerview.ParentItemAdapter"
+        <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
-            android:layout_height="170dp" />
+            android:orientation="vertical"
+            android:layout_height="170dp"
+            />
+
+
+        <!--<farshid_roohi.ir.customrecyclerview.ParentItemAdapter-->
+        <!--android:id="@+id/item_recycler"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="170dp"/>-->
+        <!--<view-->
+        <!--android:id="@+id/item_recycler"-->
+        <!--class="farshid_roohi.ir.customrecyclerview.ParentItemAdapter"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="170dp" />-->
 
         <ProgressBar
             android:id="@+id/progress_view"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:visibility="visible"
             android:layout_centerInParent="true"
-            android:layout_gravity="center|top"/>
+            android:layout_gravity="center|top"
+            android:layout_marginTop="20dp"
+            android:visibility="visible" />
 
 
     </RelativeLayout>

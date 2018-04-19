@@ -18,10 +18,12 @@ public class ItemContainer extends LinearLayout {
 
     public ItemContainer(Context context) {
         super(context);
+        initializeView();
     }
 
     public ItemContainer(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        initializeView();
     }
 
     public ItemContainer(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -45,7 +47,7 @@ public class ItemContainer extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        initializeView();
+//        initializeView();
     }
 
 
@@ -61,7 +63,7 @@ public class ItemContainer extends LinearLayout {
         RecyclerView recyclerViewRoot = view.findViewById(R.id.recyclerView_root);
         recyclerViewRoot.setScrollContainer(false);
         recyclerViewRoot.setNestedScrollingEnabled(false);
-        this.adapterContainer = new ItemContainerAdapter();
+        this.adapterContainer = new ItemContainerAdapter(getContext());
         recyclerViewRoot.setAdapter(this.adapterContainer);
         recyclerViewRoot.setLayoutManager(new LinearLayoutManager(getContext()
                 ,LinearLayoutManager.VERTICAL,false));

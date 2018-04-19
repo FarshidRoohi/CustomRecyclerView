@@ -1,25 +1,24 @@
 package farshid_roohi.ir.customrecyclerview;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import java.util.List;
 
 
-
-/**
- * Easy Shop Created by farshid roohi on 11/28/17.
- */
-
 public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdapter> {
 
+    private Context context;
 
     public ItemContainerAdapter(List<ParentItemAdapter> list) {
         super(list);
     }
 
-    public ItemContainerAdapter() {
+    public ItemContainerAdapter(Context context) {
+        this.context = context;
     }
 
     @Override
@@ -39,21 +38,23 @@ public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdap
         viewHolder.itemRecyclers.setTitle(element.getTitle());
         viewHolder.itemRecyclers.addAllItem(element.getItemAdapter().getItems());
         viewHolder.itemRecyclers.setParent(element, position);
-
         viewHolder.progressView.setVisibility(element.getVisibilityProgressBar() ? View.VISIBLE : View.GONE);
 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ParentItemAdapter itemRecyclers;
         ProgressBar       progressView;
+        ParentItemAdapter itemRecyclers;
+        ViewGroup layout;
 
         ViewHolder(final View view) {
             super(view);
 
-            itemRecyclers = view.findViewById(R.id.item_recycler);
+            layout = view.findViewById(R.id.layout);
             progressView = view.findViewById(R.id.progress_view);
+            itemRecyclers = new ParentItemAdapter(context);
+            layout.addView(itemRecyclers);
         }
     }
 }

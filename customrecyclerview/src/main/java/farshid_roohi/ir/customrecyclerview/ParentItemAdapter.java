@@ -14,16 +14,16 @@ import android.widget.TextView;
 import java.util.List;
 
 
-
 public class ParentItemAdapter extends LinearLayout {
 
     public final String TAG = ParentItemAdapter.class.getSimpleName();
 
     private OnClickItemMoreListener listener;
     private TextView                txtTitle;
-    private TextView           txtMore;
+    private TextView                txtMore;
     private boolean                 flagVisibilityProgress;
 
+    private RecyclerView      recyclerViewItem;
     private ParentItemAdapter parent;
     private ChildItemAdapter  itemAdapter;
     private int               parentPosition;
@@ -43,8 +43,8 @@ public class ParentItemAdapter extends LinearLayout {
         initializeView();
     }
 
-    public void addAllItem(List<ChildModel> myList) {
-        itemAdapter.swapData(myList);
+    public void addAllItem(List<ChildModel> items) {
+        this.itemAdapter.swapData(items);
     }
 
     public void addItem(ChildModel item) {
@@ -68,17 +68,23 @@ public class ParentItemAdapter extends LinearLayout {
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.c_parent_item, this);
         //initialize recyclerView
-        RecyclerView recyclerViewItem = view.findViewById(R.id.recyclerView_item);
+        recyclerViewItem = view.findViewById(R.id.recyclerView_item);
         this.txtTitle = view.findViewById(R.id.txt_title);
         this.txtMore = view.findViewById(R.id.txt_more);
         this.itemAdapter = new ChildItemAdapter();
-        recyclerViewItem.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
-        recyclerViewItem.setAdapter(this.itemAdapter);
+        this.recyclerViewItem.setAdapter(this.itemAdapter);
+        this.recyclerViewItem.setLayoutManager(new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, true));
     }
 
     public void setTitle(String value) {
         this.txtTitle.setVisibility(VISIBLE);
         this.txtTitle.setText(value);
+    }
+
+    public void setAdapter(ChildItemAdapter adapter) {
+        this.itemAdapter = adapter;
+        this.recyclerViewItem.setAdapter(this.itemAdapter);
     }
 
     public void setMoreTitle(String value) {
