@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import farshid_roohi.ir.customrecyclerview.BaseAdapterRecyclerView;
+import farshid_roohi.ir.customrecyclerview.adapter.BaseAdapterRecyclerView;
 
 
 public class ChildAdapter extends BaseAdapterRecyclerView<Model> {
@@ -21,7 +21,7 @@ public class ChildAdapter extends BaseAdapterRecyclerView<Model> {
 
     @Override
     public int getView() {
-        return R.layout.c_item_child_item;
+        return R.layout.item_view;
     }
 
     @Override

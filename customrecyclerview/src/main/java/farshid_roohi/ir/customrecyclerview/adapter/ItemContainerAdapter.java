@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.customrecyclerview.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,12 +8,15 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
+import farshid_roohi.ir.customrecyclerview.R;
+import farshid_roohi.ir.customrecyclerview.view.ParentItemView;
 
-public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdapter> {
+
+public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemView> {
 
     private Context context;
 
-    public ItemContainerAdapter(List<ParentItemAdapter> list) {
+    public ItemContainerAdapter(List<ParentItemView> list) {
         super(list);
     }
 
@@ -23,7 +26,7 @@ public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdap
 
     @Override
     public int getView() {
-        return R.layout.item_list_recycler_main;
+        return R.layout.item_container;
     }
 
     @Override
@@ -32,7 +35,7 @@ public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdap
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, int viewType, ParentItemAdapter element) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, int viewType, ParentItemView element) {
         ViewHolder viewHolder = (ViewHolder) holder;
 
         viewHolder.itemRecyclers.setTitle(element.getTitle());
@@ -44,16 +47,16 @@ public class ItemContainerAdapter extends BaseAdapterRecyclerView<ParentItemAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ProgressBar       progressView;
-        ParentItemAdapter itemRecyclers;
-        ViewGroup layout;
+        ProgressBar    progressView;
+        ParentItemView itemRecyclers;
+        ViewGroup      layout;
 
         ViewHolder(final View view) {
             super(view);
 
             layout = view.findViewById(R.id.layout);
             progressView = view.findViewById(R.id.progress_view);
-            itemRecyclers = new ParentItemAdapter(context);
+            itemRecyclers = new ParentItemView(context);
             layout.addView(itemRecyclers);
         }
     }

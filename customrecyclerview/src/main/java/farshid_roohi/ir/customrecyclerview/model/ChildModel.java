@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.customrecyclerview.model;
 
 
 public class ChildModel {

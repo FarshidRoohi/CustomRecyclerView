@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.customrecyclerview.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -13,32 +13,36 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import farshid_roohi.ir.customrecyclerview.model.ChildModel;
+import farshid_roohi.ir.customrecyclerview.R;
+import farshid_roohi.ir.customrecyclerview.adapter.ChildItemAdapter;
 
-public class ParentItemAdapter extends LinearLayout {
 
-    public final String TAG = ParentItemAdapter.class.getSimpleName();
+public class ParentItemView extends LinearLayout {
+
+    public final String TAG = ParentItemView.class.getSimpleName();
 
     private OnClickItemMoreListener listener;
     private TextView                txtTitle;
     private TextView                txtMore;
     private boolean                 flagVisibilityProgress;
 
-    private RecyclerView      recyclerViewItem;
-    private ParentItemAdapter parent;
-    private ChildItemAdapter  itemAdapter;
-    private int               parentPosition;
+    private RecyclerView     recyclerViewItem;
+    private ParentItemView   parent;
+    private ChildItemAdapter itemAdapter;
+    private int              parentPosition;
 
-    public ParentItemAdapter(Context context) {
+    public ParentItemView(Context context) {
         super(context);
         initializeView();
     }
 
-    public ParentItemAdapter(Context context, @Nullable AttributeSet attrs) {
+    public ParentItemView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initializeView();
     }
 
-    public ParentItemAdapter(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ParentItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initializeView();
     }
@@ -51,12 +55,12 @@ public class ParentItemAdapter extends LinearLayout {
         this.itemAdapter.putItem(item);
     }
 
-    public void setParent(ParentItemAdapter parent, int position) {
+    public void setParent(ParentItemView parent, int position) {
         this.parent = parent;
         this.parentPosition = position;
     }
 
-    public ParentItemAdapter getParentItem() {
+    public ParentItemView getParentItem() {
         return this.parent;
     }
 
@@ -66,7 +70,7 @@ public class ParentItemAdapter extends LinearLayout {
 
     private void initializeView() {
 
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.c_parent_item, this);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.parent_item_view, this);
         //initialize recyclerView
         recyclerViewItem = view.findViewById(R.id.recyclerView_item);
         this.txtTitle = view.findViewById(R.id.txt_title);

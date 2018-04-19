@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.customrecyclerview.utility;
 
 /**
  * @{PROJECT_NAME} Created by Farshid on 11/11/2017.

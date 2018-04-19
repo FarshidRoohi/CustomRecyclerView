@@ -6,10 +6,10 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-import farshid_roohi.ir.customrecyclerview.ChildItemAdapter;
-import farshid_roohi.ir.customrecyclerview.ChildModel;
-import farshid_roohi.ir.customrecyclerview.ItemContainer;
-import farshid_roohi.ir.customrecyclerview.ParentItemAdapter;
+import farshid_roohi.ir.customrecyclerview.adapter.ChildItemAdapter;
+import farshid_roohi.ir.customrecyclerview.model.ChildModel;
+import farshid_roohi.ir.customrecyclerview.view.ItemContainerView;
+import farshid_roohi.ir.customrecyclerview.view.ParentItemView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ItemContainer itemMainContainer = findViewById(R.id.item_container);
+        ItemContainerView itemMainContainer = findViewById(R.id.item_container);
 
         List<ChildModel> listOne = new ArrayList<>();
         listOne.add(new ChildModel(0, "name 1", "title"));
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         listOne.add(new ChildModel(0, "name 4", "title"));
         listOne.add(new ChildModel(0, "name 5", "title"));
         ChildItemAdapter adapter = new ChildItemAdapter(listOne);
-        ParentItemAdapter itemOne = new ParentItemAdapter(this);
+        ParentItemView   itemOne = new ParentItemView(this);
         itemOne.addAllItem(listOne);
         itemOne.setTitle("one");
 

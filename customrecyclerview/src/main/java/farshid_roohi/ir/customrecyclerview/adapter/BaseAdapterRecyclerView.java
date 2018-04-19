@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.customrecyclerview.adapter;
 
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;

@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.customrecyclerview.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -11,32 +11,36 @@ import android.widget.LinearLayout;
 
 import java.util.List;
 
-public class ItemContainer extends LinearLayout {
+import farshid_roohi.ir.customrecyclerview.model.ChildModel;
+import farshid_roohi.ir.customrecyclerview.R;
+import farshid_roohi.ir.customrecyclerview.adapter.ItemContainerAdapter;
+
+public class ItemContainerView extends LinearLayout {
 
     private       ItemContainerAdapter     adapterContainer;
     public static RecyclerItemMainListener listener;
 
-    public ItemContainer(Context context) {
+    public ItemContainerView(Context context) {
         super(context);
         initializeView();
     }
 
-    public ItemContainer(Context context, @Nullable AttributeSet attrs) {
+    public ItemContainerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initializeView();
     }
 
-    public ItemContainer(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ItemContainerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
 
-    public void setList(List<ParentItemAdapter> list) {
+    public void setList(List<ParentItemView> list) {
         this.adapterContainer.swapData(list);
 
     }
 
-    public void addItem(ParentItemAdapter item) {
+    public void addItem(ParentItemView item) {
         this.adapterContainer.putItem(item);
     }
 
@@ -52,13 +56,13 @@ public class ItemContainer extends LinearLayout {
 
 
     public void serListener(RecyclerItemMainListener listener) {
-        ItemContainer.listener = listener;
+        ItemContainerView.listener = listener;
 
     }
 
     private void initializeView() {
 
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_container, this);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.container, this);
         //initialize recyclerView
         RecyclerView recyclerViewRoot = view.findViewById(R.id.recyclerView_root);
         recyclerViewRoot.setScrollContainer(false);

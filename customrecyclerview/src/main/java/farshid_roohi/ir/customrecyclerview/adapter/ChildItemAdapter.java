@@ -1,10 +1,14 @@
-package farshid_roohi.ir.customrecyclerview;
+package farshid_roohi.ir.customrecyclerview.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.List;
+
+import farshid_roohi.ir.customrecyclerview.model.ChildModel;
+import farshid_roohi.ir.customrecyclerview.view.ItemContainerView;
+import farshid_roohi.ir.customrecyclerview.R;
 
 
 public class ChildItemAdapter extends BaseAdapterRecyclerView<ChildModel> {
@@ -19,7 +23,7 @@ public class ChildItemAdapter extends BaseAdapterRecyclerView<ChildModel> {
 
     @Override
     public int getView() {
-        return R.layout.c_item_child_item;
+        return R.layout.child_item;
     }
 
     @Override
@@ -50,9 +54,9 @@ public class ChildItemAdapter extends BaseAdapterRecyclerView<ChildModel> {
         @Override
         public void onClick(View v) {
 
-            if (ItemContainer.listener != null) {
+            if (ItemContainerView.listener != null) {
                 ChildModel item = getItems().get(getAdapterPosition());
-                ItemContainer.listener.onClickItem(item, getAdapterPosition());
+                ItemContainerView.listener.onClickItem(item, getAdapterPosition());
             }
 
         }
