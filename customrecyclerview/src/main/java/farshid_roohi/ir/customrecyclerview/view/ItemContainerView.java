@@ -11,70 +11,47 @@ import android.widget.LinearLayout;
 
 import java.util.List;
 
-import farshid_roohi.ir.customrecyclerview.model.ChildModel;
 import farshid_roohi.ir.customrecyclerview.R;
-import farshid_roohi.ir.customrecyclerview.adapter.ItemContainerAdapter;
 
 public class ItemContainerView extends LinearLayout {
 
-    private       ItemContainerAdapter     adapterContainer;
-    public static RecyclerItemMainListener listener;
+    private RecyclerView         recyclerContainer;
+
+    private ItemContainerAdapter containerAdapter;
 
     public ItemContainerView(Context context) {
         super(context);
-        initializeView();
+        this.initializeView();
     }
 
     public ItemContainerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initializeView();
+        this.initializeView();
     }
 
     public ItemContainerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-
-    public void setList(List<ParentItemView> list) {
-        this.adapterContainer.swapData(list);
-
-    }
-
-    public void addItem(ParentItemView item) {
-        this.adapterContainer.putItem(item);
-    }
-
-    public ItemContainerAdapter getAdapterContainer() {
-        return adapterContainer;
-    }
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-//        initializeView();
+        this.initializeView();
     }
 
-
-    public void serListener(RecyclerItemMainListener listener) {
-        ItemContainerView.listener = listener;
-
+    public void setParents(List<ItemParentView> values) {
+        this.containerAdapter.putItems(values);
+        this.containerAdapter.notifyDataSetChanged();
     }
 
     private void initializeView() {
 
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.container, this);
-        //initialize recyclerView
-        RecyclerView recyclerViewRoot = view.findViewById(R.id.recyclerView_root);
-        recyclerViewRoot.setScrollContainer(false);
-        recyclerViewRoot.setNestedScrollingEnabled(false);
-        this.adapterContainer = new ItemContainerAdapter(getContext());
-        recyclerViewRoot.setAdapter(this.adapterContainer);
-        recyclerViewRoot.setLayoutManager(new LinearLayoutManager(getContext()
-                ,LinearLayoutManager.VERTICAL,false));
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_container, this, true);
 
-    }
+        this.recyclerContainer = view.findViewById(R.id.recycler_container);
+        this.recyclerContainer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        this.containerAdapter = new ItemContainerAdapter(getContext());
+        this.recyclerContainer.setAdapter(this.containerAdapter);
 
-    public interface RecyclerItemMainListener {
-        void onClickItem(ChildModel item, int position);
     }
 }

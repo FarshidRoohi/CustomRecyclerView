@@ -1,13 +1,13 @@
-package farshid_roohi.ir.customrecyclerview.model;
+package farshid_roohi.ir.sample.customrecyclerview.sample;
 
 
-public class ChildModel {
+public class ModelSample {
 
     private int id;
     private String name;
     private String family;
 
-    public ChildModel(int id , String name , String family){
+    public ModelSample(int id , String name , String family){
         this.id = id;
         this.name = name;
         this.family = family;
