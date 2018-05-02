@@ -12,6 +12,7 @@ import farshid_roohi.ir.customrecyclerview.view.ItemParentView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private List<ModelSample> listOne;
     private List<ModelSample> listTwo;
     private List<ModelSample> listThree;
 
@@ -20,39 +21,60 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listTwo = new ArrayList<>();
-        listTwo.add(new ModelSample(0, "name 1", "title"));
-        listTwo.add(new ModelSample(0, "name 2", "title"));
-        listTwo.add(new ModelSample(0, "name 3", "title"));
-        listTwo.add(new ModelSample(0, "name 4", "title"));
-        listTwo.add(new ModelSample(0, "name 5", "title"));
-
-        listThree = new ArrayList<>();
-        listThree.add(new ModelSample(0, "name A", "title"));
-        listThree.add(new ModelSample(0, "name B", "title"));
-        listThree.add(new ModelSample(0, "name C", "title"));
-        listThree.add(new ModelSample(0, "name D", "title"));
-        listThree.add(new ModelSample(0, "name E", "title"));
+        populateFakeItem();
 
         ItemContainerView itemContainerView = findViewById(R.id.item_container);
 
         List<ItemParentView> itemParentViewList = new ArrayList<>();
 
 
-        ChildAdapterSample adapterOne = new ChildAdapterSample(listTwo);
+        // populate item fake one
+        ChildAdapterSample adapterOne = new ChildAdapterSample(this.listOne);
         ItemParentView     itemOne    = new ItemParentView(this);
         itemOne.setTitle("title is test");
         itemOne.setAdapter(adapterOne);
         itemParentViewList.add(itemOne);
 
-        ChildAdapterSample adapterTwo = new ChildAdapterSample(listThree);
+        // populate item fake two
+        ChildAdapterSample adapterTwo = new ChildAdapterSample(this.listTwo);
         ItemParentView     item2      = new ItemParentView(this);
         item2.setTitle("title is two");
         item2.setAdapter(adapterTwo);
-
         itemParentViewList.add(item2);
+
+        // populate item fake three
+        ChildAdapterSample adapterThree = new ChildAdapterSample(this.listThree);
+        ItemParentView     item3        = new ItemParentView(this);
+        item3.setTitle("title is three");
+        item3.setAdapter(adapterThree);
+        itemParentViewList.add(item3);
+
         itemContainerView.setParents(itemParentViewList);
 
+    }
+
+    private void populateFakeItem() {
+        listOne = new ArrayList<>();
+        listTwo = new ArrayList<>();
+        listThree = new ArrayList<>();
+        this.listOne.add(new ModelSample(0, "A", "title"));
+        this.listOne.add(new ModelSample(0, "B", "title"));
+        this.listOne.add(new ModelSample(0, "C", "title"));
+        this.listOne.add(new ModelSample(0, "D", "title"));
+        this.listOne.add(new ModelSample(0, "E", "title"));
+
+
+        this.listTwo.add(new ModelSample(0, "1", "title"));
+        this.listTwo.add(new ModelSample(0, "2", "title"));
+        this.listTwo.add(new ModelSample(0, "3", "title"));
+        this.listTwo.add(new ModelSample(0, "4", "title"));
+        this.listTwo.add(new ModelSample(0, "5", "title"));
+
+        this.listThree.add(new ModelSample(0, "!", "title"));
+        this.listThree.add(new ModelSample(0, "@", "title"));
+        this.listThree.add(new ModelSample(0, "#", "title"));
+        this.listThree.add(new ModelSample(0, "$", "title"));
+        this.listThree.add(new ModelSample(0, "%", "title"));
     }
 
 }
