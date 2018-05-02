@@ -7,7 +7,7 @@
 
 
 
-- via Gradle: 
+ ###### via Gradle: 
 
 ```Gradle
    implementation 'ir.farshid_roohi:customrecyclerview:0.1.0'
