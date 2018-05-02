@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,13 +23,14 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center|left"
                 android:padding="10dp"
-                android:text="title right"
-                android:textColor="#202020" />
+                android:textColor="@color/color_text_tile_list"
+                tools:ignore="RtlHardcoded" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                tools:ignore="UselessLeaf" />
 
             <TextView
                 android:id="@+id/txt_right_title"
@@ -35,8 +39,8 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center|right"
                 android:padding="10dp"
-                android:text="title test"
-                android:textColor="#202020" />
+                android:textColor="@color/color_text_tile_list"
+                tools:ignore="RtlHardcoded" />
 
         </LinearLayout>
 

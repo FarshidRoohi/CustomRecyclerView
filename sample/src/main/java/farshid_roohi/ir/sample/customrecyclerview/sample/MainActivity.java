@@ -12,7 +12,7 @@ import farshid_roohi.ir.sample.customrecyclerview.R;
 import farshid_roohi.ir.customrecyclerview.view.view.ItemContainerView;
 import farshid_roohi.ir.customrecyclerview.view.view.ItemParentView;
 
-public class MainActivity extends AppCompatActivity implements OnClickTitleListener, ChildAdapterSample.OnClickItemListener {
+public class MainActivity extends AppCompatActivity implements OnClickTitleListener, ChildAdapter.OnClickItemListener {
 
     private List<ModelSample> listOne;
     private List<ModelSample> listTwo;
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         List<ItemParentView> itemParentViewList = new ArrayList<>();
 
         // populate item fake one
-        ChildAdapterSample adapterOne = new ChildAdapterSample(this.listOne);
-        ItemParentView     item1      = new ItemParentView(this);
+        ChildAdapter   adapterOne = new ChildAdapter(this.listOne);
+        ItemParentView item1      = new ItemParentView(this);
         adapterOne.setItemLIstener(this);
         item1.setTitlesListener(this);
         item1.setRightTitle("more");
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
 
 
         // populate item fake two
-        ChildAdapterSample adapterTwo = new ChildAdapterSample(this.listTwo);
-        ItemParentView     item2      = new ItemParentView(this);
+        ChildAdapter   adapterTwo = new ChildAdapter(this.listTwo);
+        ItemParentView item2      = new ItemParentView(this);
         adapterTwo.setItemLIstener(this);
         item2.setTitlesListener(this);
         item2.setLeftTitle("title two");
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         item2.setAdapter(adapterTwo);
 
         // populate item fake three
-        ChildAdapterSample adapterThree = new ChildAdapterSample(this.listThree);
-        ItemParentView     item3        = new ItemParentView(this);
+        ChildAdapter   adapterThree = new ChildAdapter(this.listThree);
+        ItemParentView item3        = new ItemParentView(this);
         adapterThree.setItemLIstener(this);
         item3.setTitlesListener(this);
         item3.setLeftTitle("title three");

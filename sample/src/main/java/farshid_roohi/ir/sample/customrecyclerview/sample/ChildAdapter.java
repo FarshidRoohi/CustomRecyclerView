@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -16,11 +15,11 @@ import java.util.List;
 import farshid_roohi.ir.sample.customrecyclerview.R;
 
 
-public class ChildAdapterSample extends RecyclerView.Adapter<ChildAdapterSample.ViewHolder> {
+public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> {
 
     private List<ModelSample> list;
 
-    public ChildAdapterSample(List<ModelSample> list) {
+    public ChildAdapter(List<ModelSample> list) {
         this.list = list;
     }
 

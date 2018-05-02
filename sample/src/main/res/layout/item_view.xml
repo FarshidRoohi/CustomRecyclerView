@@ -22,7 +22,7 @@
                 android:layout_margin="5dp"
                 android:foreground="?attr/selectableItemBackground"
                 app:cardBackgroundColor="#F2F3F5"
-                app:cardCornerRadius="10dp"
+                app:cardCornerRadius="2dp"
                 app:cardElevation="1dp">
 
                 <RelativeLayout
@@ -42,6 +42,7 @@
                         android:gravity="center"
                         android:shadowColor="#7c9b9b9b"
                         android:shadowDx="1"
+                        android:background="#51110022"
                         android:shadowDy="2"
                         android:shadowRadius="3" />
 
