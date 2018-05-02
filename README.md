@@ -10,7 +10,7 @@
 ```
 ##### screenShot : 
 
-<img src="https://raw.githubusercontent.com/FarshidRoohi/CustomRecyclerView/master/art/img.jpg" alt="screen show" width="270px" height="500px">
+<img src="https://raw.githubusercontent.com/FarshidRoohi/CustomRecyclerView/master/art/img.png" alt="screen show" width="270px" height="500px">
 
 ### example : 
 
