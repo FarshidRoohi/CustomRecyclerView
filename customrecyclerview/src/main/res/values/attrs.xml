@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <declare-styleable name="ItemContainerView">
+        <attr name="titleDirectionRtl" format="boolean" />
+        <attr name="titleColor" format="color" />
+        <attr name="android:textSize" />
+    </declare-styleable>
 </resources>

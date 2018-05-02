@@ -11,7 +11,7 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -23,14 +23,9 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center|left"
                 android:padding="10dp"
+                android:layout_alignParentLeft="true"
                 android:textColor="@color/color_text_tile_list"
                 tools:ignore="RtlHardcoded" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf" />
 
             <TextView
                 android:id="@+id/txt_right_title"
@@ -38,11 +33,12 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center|right"
+                android:layout_alignParentRight="true"
                 android:padding="10dp"
                 android:textColor="@color/color_text_tile_list"
                 tools:ignore="RtlHardcoded" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <android.support.v7.widget.RecyclerView

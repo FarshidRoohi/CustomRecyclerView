@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         item1.setRightTitle("more");
         item1.setLeftTitle("title one");
         item1.setAdapter(adapterOne);
+        item1.setRtlLayout(true);
         item1.setTitlesAction("action1", "action2");
 
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         itemParentViewList.add(item2);
         itemParentViewList.add(item3);
 
-        itemContainerView.setParents(itemParentViewList);
+        itemContainerView.setItems(itemParentViewList);
 
     }
 

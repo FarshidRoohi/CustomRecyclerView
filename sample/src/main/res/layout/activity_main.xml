@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +14,10 @@
         <farshid_roohi.ir.customrecyclerview.view.view.ItemContainerView
             android:id="@+id/item_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            app:titleColor="@color/color_titles"
+            app:titleDirectionRtl="false" />
 
     </LinearLayout>
 

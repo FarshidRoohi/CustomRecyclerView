@@ -1,19 +1,22 @@
 package farshid_roohi.ir.customrecyclerview.view.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
+import android.support.annotation.DimenRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
@@ -25,11 +28,13 @@ import farshid_roohi.ir.customrecyclerview.view.listener.OnClickTitleListener;
 public class ItemParentView<Adapter extends RecyclerView.Adapter> extends LinearLayout {
 
     private OnClickTitleListener listener;
+    private LinearLayoutManager  linearLayoutManager;
     private RecyclerView         recyclerParentChild;
     private TextView             txtLeftTitle;
     private TextView             txtRightTitle;
     private Adapter              adapter;
-    private boolean              flagVisibilityProgress;
+    private boolean              isRtlLayout;
+    private boolean              isVisibilityProgress;
     private int                  titleColor;
     private String               titleRight;
     private String               titleLeft;
@@ -129,6 +134,14 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         return this.leftTitleActions;
     }
 
+    public void setTitleTextSize(@SuppressLint("SupportAnnotationUsage") @DimenRes float size) {
+        if (this.txtRightTitle == null || this.txtLeftTitle == null) {
+            return;
+        }
+        this.txtLeftTitle.setTextSize(size);
+        this.txtRightTitle.setTextSize(size);
+    }
+
     /**
      * Adapter
      *
@@ -144,11 +157,11 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
      * @param flag
      */
     public void setVisibilityProgressBar(boolean flag) {
-        this.flagVisibilityProgress = flag;
+        this.isVisibilityProgress = flag;
     }
 
     public boolean getVisibilityProgressBar() {
-        return this.flagVisibilityProgress;
+        return this.isVisibilityProgress;
     }
 
     /**
@@ -191,6 +204,32 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         this.leftTitleActions = leftTitle;
     }
 
+
+    public boolean getIsRtlLayout() {
+        return this.isRtlLayout;
+    }
+
+    public void setRtlLayout(boolean flag) {
+        this.isRtlLayout = flag;
+        if (flag) {
+
+            this.linearLayoutManager.setReverseLayout(true);
+            RelativeLayout.LayoutParams paramsLeft =
+                    new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+            paramsLeft.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
+
+            RelativeLayout.LayoutParams paramsRight =
+                    new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+            paramsRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+
+            this.txtRightTitle.setLayoutParams(paramsLeft);
+            this.txtLeftTitle.setLayoutParams(paramsRight);
+        }
+
+    }
+
     private void initializeView() {
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.item_parent_view, this, true);
@@ -198,7 +237,9 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         this.txtLeftTitle = view.findViewById(R.id.txt_left_title);
         this.txtRightTitle = view.findViewById(R.id.txt_right_title);
         this.recyclerParentChild = view.findViewById(R.id.recycler_parent_child);
-        this.recyclerParentChild.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+        linearLayoutManager = new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL, this.isRtlLayout);
+        this.recyclerParentChild.setLayoutManager(this.linearLayoutManager);
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 configClickableEffect();
