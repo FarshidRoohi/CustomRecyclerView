@@ -3,14 +3,14 @@ package farshid_roohi.ir.sample.customrecyclerview.sample;
 
 public class ModelSample {
 
-    private int id;
+    private int    id;
     private String name;
-    private String family;
+    private String imageUrl;
 
-    public ModelSample(int id , String name , String family){
+    public ModelSample(int id , String name , String imageUrl){
         this.id = id;
         this.name = name;
-        this.family = family;
+        this.imageUrl = imageUrl;
     }
 
     public int getId() {
@@ -29,11 +29,11 @@ public class ModelSample {
         this.name = name;
     }
 
-    public String getFamily() {
-        return family;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setFamily(String family) {
-        this.family = family;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

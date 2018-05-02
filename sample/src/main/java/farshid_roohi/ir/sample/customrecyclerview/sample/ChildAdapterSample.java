@@ -5,11 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import farshid_roohi.ir.customrecyclerview.view.listener.OnClickTitleListener;
 import farshid_roohi.ir.sample.customrecyclerview.R;
 
 
@@ -20,10 +23,6 @@ public class ChildAdapterSample extends RecyclerView.Adapter<ChildAdapterSample.
     public ChildAdapterSample(List<ModelSample> list) {
         this.list = list;
     }
-
-    public ChildAdapterSample() {
-    }
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,19 +36,26 @@ public class ChildAdapterSample extends RecyclerView.Adapter<ChildAdapterSample.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ModelSample item = this.list.get(position);
+
         holder.txtName.setText(item.getName());
+        Picasso.get()
+                .load(item.getImageUrl())
+                .into(holder.img);
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtName;
-        private CardView cardView;
+        private CardView  cardView;
+        private ImageView img;
+        private TextView  txtName;
 
         ViewHolder(View view) {
             super(view);
 
-            txtName = view.findViewById(R.id.txtName);
             cardView = view.findViewById(R.id.card_view);
+            img = view.findViewById(R.id.img);
+            txtName = view.findViewById(R.id.txt_name);
             if (listener == null) {
                 return;
             }

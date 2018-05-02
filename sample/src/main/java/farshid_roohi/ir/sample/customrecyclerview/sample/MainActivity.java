@@ -2,7 +2,6 @@ package farshid_roohi.ir.sample.customrecyclerview.sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -71,38 +70,40 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
     }
 
     private void populateFakeItem() {
+        String imageUrl = "http://farshid-roohi.ir/img/sample-image.jpg";
 
         this.listOne = new ArrayList<>();
         this.listTwo = new ArrayList<>();
         this.listThree = new ArrayList<>();
 
-        this.listOne.add(new ModelSample(0, "A", "title"));
-        this.listOne.add(new ModelSample(0, "B", "title"));
-        this.listOne.add(new ModelSample(0, "C", "title"));
-        this.listOne.add(new ModelSample(0, "D", "title"));
-        this.listOne.add(new ModelSample(0, "E", "title"));
 
-        this.listTwo.add(new ModelSample(0, "1", "title"));
-        this.listTwo.add(new ModelSample(0, "2", "title"));
-        this.listTwo.add(new ModelSample(0, "3", "title"));
-        this.listTwo.add(new ModelSample(0, "4", "title"));
-        this.listTwo.add(new ModelSample(0, "5", "title"));
+        this.listOne.add(new ModelSample(0, "A", imageUrl));
+        this.listOne.add(new ModelSample(0, "B", imageUrl));
+        this.listOne.add(new ModelSample(0, "C", imageUrl));
+        this.listOne.add(new ModelSample(0, "D", imageUrl));
+        this.listOne.add(new ModelSample(0, "E", imageUrl));
 
-        this.listThree.add(new ModelSample(0, "!", "title"));
-        this.listThree.add(new ModelSample(0, "@", "title"));
-        this.listThree.add(new ModelSample(0, "#", "title"));
-        this.listThree.add(new ModelSample(0, "$", "title"));
-        this.listThree.add(new ModelSample(0, "%", "title"));
+        this.listTwo.add(new ModelSample(0, "1", imageUrl));
+        this.listTwo.add(new ModelSample(0, "2", imageUrl));
+        this.listTwo.add(new ModelSample(0, "3", imageUrl));
+        this.listTwo.add(new ModelSample(0, "4", imageUrl));
+        this.listTwo.add(new ModelSample(0, "5", imageUrl));
+
+        this.listThree.add(new ModelSample(0, "!", imageUrl));
+        this.listThree.add(new ModelSample(0, "@", imageUrl));
+        this.listThree.add(new ModelSample(0, "#", imageUrl));
+        this.listThree.add(new ModelSample(0, "$", imageUrl));
+        this.listThree.add(new ModelSample(0, "%", imageUrl));
     }
 
     @Override
     public void onClickRightTitleListener(String action) {
-        Toast.makeText(this, "" + action, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onClickLeftTitleListener(String action) {
-        Toast.makeText(this, "" + action, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, action, Toast.LENGTH_SHORT).show();
 
     }
 
