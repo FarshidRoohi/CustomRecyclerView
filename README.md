@@ -1,13 +1,27 @@
-# Custom RecyclerView
-###### simple  Google play RecyclerView
+# Custom RecyclerView simple Google play 
+
+  ![API](https://img.shields.io/badge/API-14%2B-blue.svg?style=flat)
+
+  - Simple  Google play RecyclerView
+  - Support right to left title and reverse RecyclerView items (Persian Language)
 
 
-![API](https://img.shields.io/badge/API-14%2B-blue.svg?style=flat)
-- Add library gradle : 
+
+- via Gradle: 
 
 ```Gradle
-   compile 'ir.farshid_roohi:customrecyclerview:0.1.0'
+   implementation 'ir.farshid_roohi:customrecyclerview:0.1.0'
 ```
+###### or Maven:
+ ```Maven
+ <dependency>
+   <groupId>ir.farshid_roohi</groupId>
+   <artifactId>customrecyclerview</artifactId>
+   <version>0.1.0</version>
+   <type>pom</type>
+ </dependency>
+ ```
+
 ##### screenShot : 
 
 <img src="https://raw.githubusercontent.com/FarshidRoohi/CustomRecyclerView/master/art/img.png" alt="screen show" width="270px" height="500px">
