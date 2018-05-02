@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview.view;
+package farshid_roohi.ir.customrecyclerview.view.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import java.util.List;
 
 import farshid_roohi.ir.customrecyclerview.R;
+import farshid_roohi.ir.customrecyclerview.view.view.ItemParentView;
 
 public class ItemContainerAdapter extends RecyclerView.Adapter<ItemContainerAdapter.ViewHolder> {
 
@@ -47,10 +48,13 @@ public class ItemContainerAdapter extends RecyclerView.Adapter<ItemContainerAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ItemParentView item = this.itemParentViewList.get(position);
-        holder.itemParent.setTitle(item.getTitle());
+        holder.itemParent.setRightTitle(item.getTitleRight());
+        holder.itemParent.setLeftTitle(item.getTitleLeft());
         holder.itemParent.setAdapter(item.getAdapter());
-        item.getAdapter().notifyDataSetChanged();
-        holder.itemParent.getAdapter().notifyDataSetChanged();
+        holder.itemParent.setTitlesAction(item.getRightTitleActions(), item.getLeftTitleActions());
+        holder.itemParent.setTitlesListener(item.getListener());
+        holder.itemParent.setTitleColor(item.getTitleColor());
+
         holder.progressBar.setVisibility(item.getVisibilityProgressBar() ? View.VISIBLE : View.GONE);
 
     }

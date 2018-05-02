@@ -1,4 +1,4 @@
-package farshid_roohi.ir.customrecyclerview.view;
+package farshid_roohi.ir.customrecyclerview.view.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -12,10 +12,9 @@ import android.widget.LinearLayout;
 import java.util.List;
 
 import farshid_roohi.ir.customrecyclerview.R;
+import farshid_roohi.ir.customrecyclerview.view.adapter.ItemContainerAdapter;
 
 public class ItemContainerView extends LinearLayout {
-
-    private RecyclerView         recyclerContainer;
 
     private ItemContainerAdapter containerAdapter;
 
@@ -31,6 +30,7 @@ public class ItemContainerView extends LinearLayout {
 
     public ItemContainerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.initializeView();
     }
 
     @Override
@@ -48,10 +48,10 @@ public class ItemContainerView extends LinearLayout {
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.item_container, this, true);
 
-        this.recyclerContainer = view.findViewById(R.id.recycler_container);
-        this.recyclerContainer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        RecyclerView recyclerContainer = view.findViewById(R.id.recycler_container);
+        recyclerContainer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         this.containerAdapter = new ItemContainerAdapter(getContext());
-        this.recyclerContainer.setAdapter(this.containerAdapter);
+        recyclerContainer.setAdapter(this.containerAdapter);
 
     }
 }

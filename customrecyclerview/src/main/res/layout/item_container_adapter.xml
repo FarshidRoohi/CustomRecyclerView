@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <farshid_roohi.ir.customrecyclerview.view.ItemParentView
+        <farshid_roohi.ir.customrecyclerview.view.view.ItemParentView
             android:id="@+id/item_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
