@@ -1,5 +1,6 @@
 package farshid_roohi.ir.sample.customrecyclerview.sample;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -25,40 +26,52 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
 
         populateFakeItem();
 
-        ItemContainerView itemContainerView = findViewById(R.id.item_container);
+        final ItemContainerView itemContainerView = findViewById(R.id.item_container);
 
         List<ItemParentView> itemParentViewList = new ArrayList<>();
 
         // populate item fake one
-        ChildAdapter   adapterOne = new ChildAdapter(this.listOne);
-        ItemParentView item1      = new ItemParentView(this);
-        adapterOne.setItemLIstener(this);
+        ChildAdapter         adapterOne = new ChildAdapter(this.listOne);
+        final ItemParentView item1      = new ItemParentView(this);
+        adapterOne.setItemListener(this);
         item1.setTitlesListener(this);
         item1.setRightTitle("more");
-        item1.setLeftTitle("title one");
+        item1.setLeftTitle("title A");
         item1.setAdapter(adapterOne);
         item1.setRtlLayout(true);
-        item1.setTitlesAction("action1", "action2");
+        item1.setTitlesAction("action A", null);
 
 
         // populate item fake two
         ChildAdapter   adapterTwo = new ChildAdapter(this.listTwo);
         ItemParentView item2      = new ItemParentView(this);
-        adapterTwo.setItemLIstener(this);
+        adapterTwo.setItemListener(this);
         item2.setTitlesListener(this);
-        item2.setLeftTitle("title two");
+        item2.setLeftTitle("title B");
         item2.setRightTitle("more");
+        item2.setTitlesAction("action B", null);
         item2.setAdapter(adapterTwo);
 
         // populate item fake three
-        ChildAdapter   adapterThree = new ChildAdapter(this.listThree);
-        ItemParentView item3        = new ItemParentView(this);
-        adapterThree.setItemLIstener(this);
+        final ChildAdapter   adapterThree = new ChildAdapter();
+        final ItemParentView item3        = new ItemParentView(this);
+        adapterThree.setItemListener(this);
         item3.setTitlesListener(this);
-        item3.setLeftTitle("title three");
+        item3.setLeftTitle("title C");
         item3.setRightTitle("more");
+        item3.setVisibilityProgressBar(true);
         item3.setAdapter(adapterThree);
-        item3.setTitlesAction("action1", "action2");
+        item3.setTitlesAction("action C", null);
+
+        // Async add item example
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                adapterThree.addList(listThree);
+                item3.setVisibilityProgressBar(false);
+                itemContainerView.getContainerAdapter().notifyDataSetChanged();
+            }
+        }, 3000);
 
 
         // set All items in view

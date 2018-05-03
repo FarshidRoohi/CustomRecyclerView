@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import farshid_roohi.ir.sample.customrecyclerview.R;
@@ -20,6 +21,15 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
     private List<ModelSample> list;
 
     public ChildAdapter(List<ModelSample> list) {
+        this.list = list;
+    }
+
+    public ChildAdapter() {
+        this.list = new ArrayList<>();
+    }
+
+
+    public void addList(List<ModelSample> list) {
         this.list = list;
     }
 
@@ -70,12 +80,13 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
 
     private OnClickItemListener listener;
 
-    public void setItemLIstener(OnClickItemListener listener) {
+    public void setItemListener(OnClickItemListener listener) {
         this.listener = listener;
     }
 
     @Override
     public int getItemCount() {
+
         return this.list.size();
     }
 

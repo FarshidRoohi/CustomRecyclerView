@@ -41,9 +41,14 @@ public class ItemContainerView extends LinearLayout {
         this.containerAdapter.putItems(values);
         this.containerAdapter.notifyDataSetChanged();
     }
-    public void putItem(ItemParentView value){
+
+    public void putItem(ItemParentView value) {
         this.containerAdapter.putItem(value);
         this.containerAdapter.notifyDataSetChanged();
+    }
+
+    public ItemContainerAdapter getContainerAdapter() {
+        return this.containerAdapter;
     }
 
     private void initializeView() {

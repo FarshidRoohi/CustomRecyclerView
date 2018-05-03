@@ -175,18 +175,26 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
             return;
         }
 
-        this.txtLeftTitle.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onClickLeftTitleListener(leftTitleActions);
-            }
-        });
-        this.txtRightTitle.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onClickRightTitleListener(rightTitleActions);
-            }
-        });
+        if (this.leftTitleActions != null && !this.leftTitleActions.isEmpty()) {
+            this.txtLeftTitle.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    listener.onClickLeftTitleListener(leftTitleActions);
+                }
+            });
+        }
+
+        if (this.rightTitleActions != null && !this.rightTitleActions.isEmpty()) {
+            this.txtRightTitle.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onClickRightTitleListener(rightTitleActions);
+                }
+            });
+        }
+
+
     }
 
     public OnClickTitleListener getListener() {
@@ -199,7 +207,7 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
      * @param rightTitle
      * @param leftTitle
      */
-    public void setTitlesAction(String rightTitle, String leftTitle) {
+    public void setTitlesAction(@Nullable String rightTitle, @Nullable String leftTitle) {
         this.rightTitleActions = rightTitle;
         this.leftTitleActions = leftTitle;
     }
