@@ -27,7 +27,7 @@ android {
 }
 
 group = 'ir.farshid_roohi'
-version = '0.1.0'
+version = '0.1.1'
 
 task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -53,8 +53,8 @@ artifacts {
 }
 
 bintray {
-    user = 'xxxx'
-    key = 'xxxx'
+    user = 'XXXX'
+    key = 'XXXX'
     pkg {
 
         repo = 'CustomRecyclerView'
@@ -62,10 +62,10 @@ bintray {
         userOrg = ''
 
         version {
-            name = '0.1.0'
+            name = '0.1.1'
             desc = 'Custom RecyclerView'
             released = new Date()
-            vcsTag = '0.1.0'
+            vcsTag = '0.1.1'
         }
 
         licenses = ['Apache-2.0']
