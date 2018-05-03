@@ -17,7 +17,7 @@
  <dependency>
    <groupId>ir.farshid_roohi</groupId>
    <artifactId>customrecyclerview</artifactId>
-   <version>0.1.0</version>
+   <version>0.1.1</version>
    <type>pom</type>
  </dependency>
  ```
@@ -53,6 +53,7 @@
         item3.setTitlesAction("action C", null);
 
         // Async add item example
+        
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -62,8 +63,10 @@
             }
         }, 3000);
         
-                // set All items in view
-                itemParentViewList.add(item3);
+          // set All items in view
+          itemParentViewList.add(item3);
         
-                itemContainerView.setItems(itemParentViewList);
+          itemContainerView.setItems(itemParentViewList);
 ```
+<hr>
+##### see complete samples : <a href="https://github.com/FarshidRoohi/CustomRecyclerView/tree/master/sample">sample</a>
