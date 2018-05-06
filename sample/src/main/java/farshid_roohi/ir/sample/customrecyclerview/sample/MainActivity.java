@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         final ItemParentView item1      = new ItemParentView(this);
         adapterOne.setItemListener(this);
         item1.setTitlesListener(this);
-        item1.setRightTitle("more");
-        item1.setLeftTitle("title A");
+        item1.setSecondTitle("more");
+        item1.setFirstTitle("title A");
         item1.setAdapter(adapterOne);
         item1.setRtlLayout(true);
         item1.setTitlesAction("action A", null);
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         ItemParentView item2      = new ItemParentView(this);
         adapterTwo.setItemListener(this);
         item2.setTitlesListener(this);
-        item2.setLeftTitle("title B");
-        item2.setRightTitle("more");
+        item2.setFirstTitle("title B");
+        item2.setSecondTitle("more");
         item2.setTitlesAction("action B", null);
         item2.setAdapter(adapterTwo);
 
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         final ItemParentView item3        = new ItemParentView(this);
         adapterThree.setItemListener(this);
         item3.setTitlesListener(this);
-        item3.setLeftTitle("title C");
-        item3.setRightTitle("more");
+        item3.setFirstTitle("title C");
+        item3.setSecondTitle("more");
         item3.setVisibilityProgressBar(true);
         item3.setAdapter(adapterThree);
         item3.setTitlesAction("action C", null);

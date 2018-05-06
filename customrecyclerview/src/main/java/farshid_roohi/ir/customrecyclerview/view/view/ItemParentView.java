@@ -12,7 +12,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -27,19 +26,22 @@ import farshid_roohi.ir.customrecyclerview.view.listener.OnClickTitleListener;
 
 public class ItemParentView<Adapter extends RecyclerView.Adapter> extends LinearLayout {
 
+    private Adapter adapter;
+
     private OnClickTitleListener listener;
-    private LinearLayoutManager  linearLayoutManager;
-    private RecyclerView         recyclerParentChild;
-    private TextView             txtLeftTitle;
-    private TextView             txtRightTitle;
-    private Adapter              adapter;
-    private boolean              isRtlLayout;
-    private boolean              isVisibilityProgress;
-    private int                  titleColor;
-    private String               titleRight;
-    private String               titleLeft;
-    private String               rightTitleActions;
-    private String               leftTitleActions;
+
+    private LinearLayoutManager linearLayoutManager;
+    private RecyclerView        recyclerParentChild;
+    private TextView            txtFirstTitle;
+    private TextView            txtSecondTitle;
+
+    private boolean isRtlLayout;
+    private boolean isVisibilityProgress;
+    private int     titleColor;
+    private String  titleSecond;
+    private String  titleFirst;
+    private String  firstTitleAction;
+    private String  secondTitleAction;
 
     public ItemParentView(Context context) {
         super(context);
@@ -73,23 +75,23 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         this.adapter.notifyDataSetChanged();
     }
 
-    public void setRightTitle(String value) {
-        this.titleRight = value;
+    public void setSecondTitle(String value) {
+        this.titleSecond = value;
 
-        if (this.txtRightTitle == null) {
+        if (this.txtSecondTitle == null) {
             return;
         }
 
-        this.txtRightTitle.setText(value);
+        this.txtSecondTitle.setText(value);
     }
 
-    public void setLeftTitle(String value) {
-        this.titleLeft = value;
+    public void setFirstTitle(String value) {
+        this.titleFirst = value;
 
-        if (this.txtRightTitle == null) {
+        if (this.txtSecondTitle == null) {
             return;
         }
-        this.txtLeftTitle.setText(value);
+        this.txtFirstTitle.setText(value);
     }
 
     /**
@@ -99,47 +101,47 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
      */
     public void setTitleColor(@ColorInt int color) {
         this.titleColor = color;
-        if (this.txtRightTitle == null || this.txtLeftTitle == null || color == 0) {
+        if (this.txtSecondTitle == null || this.txtFirstTitle == null || color == 0) {
             return;
         }
-        this.txtRightTitle.setTextColor(this.titleColor);
-        this.txtLeftTitle.setTextColor(this.titleColor);
+        this.txtSecondTitle.setTextColor(this.titleColor);
+        this.txtFirstTitle.setTextColor(this.titleColor);
     }
 
     public int getTitleColor() {
         return this.titleColor;
     }
 
-    public TextView getRightTextView() {
-        return this.txtRightTitle;
+    public TextView getSecondTextView() {
+        return this.txtSecondTitle;
     }
 
-    public TextView getLeftTextView() {
-        return this.txtLeftTitle;
+    public TextView getFirstTextView() {
+        return this.txtFirstTitle;
     }
 
-    public String getTitleRight() {
-        return this.titleRight;
+    public String getTitleSecond() {
+        return this.titleSecond;
     }
 
-    public String getTitleLeft() {
-        return this.titleLeft;
+    public String getTitleFirst() {
+        return this.titleFirst;
     }
 
-    public String getRightTitleActions() {
-        return this.rightTitleActions;
+    public String getFirstTitleAction() {
+        return this.firstTitleAction;
     }
 
-    public String getLeftTitleActions() {
-        return this.leftTitleActions;
+    public String getSecondTitleAction() {
+        return this.secondTitleAction;
     }
 
     public void setTitleTextSize(@SuppressLint("SupportAnnotationUsage") @DimenRes float size) {
-        if (this.txtRightTitle == null || this.txtLeftTitle == null) {
+        if (this.txtSecondTitle == null || this.txtFirstTitle == null) {
             return;
         }
-        this.txtLeftTitle.setTextSize(size);
-        this.txtRightTitle.setTextSize(size);
+        this.txtFirstTitle.setTextSize(size);
+        this.txtSecondTitle.setTextSize(size);
     }
 
     /**
@@ -175,21 +177,21 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
             return;
         }
 
-        if (this.leftTitleActions != null && !this.leftTitleActions.isEmpty()) {
-            this.txtLeftTitle.setOnClickListener(new OnClickListener() {
+        if (this.secondTitleAction != null && !this.secondTitleAction.isEmpty()) {
+            this.txtFirstTitle.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    listener.onClickLeftTitleListener(leftTitleActions);
+                    listener.onClickLeftTitleListener(secondTitleAction);
                 }
             });
         }
 
-        if (this.rightTitleActions != null && !this.rightTitleActions.isEmpty()) {
-            this.txtRightTitle.setOnClickListener(new OnClickListener() {
+        if (this.firstTitleAction != null && !this.firstTitleAction.isEmpty()) {
+            this.txtSecondTitle.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onClickRightTitleListener(rightTitleActions);
+                    listener.onClickRightTitleListener(firstTitleAction);
                 }
             });
         }
@@ -208,8 +210,8 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
      * @param leftTitle
      */
     public void setTitlesAction(@Nullable String rightTitle, @Nullable String leftTitle) {
-        this.rightTitleActions = rightTitle;
-        this.leftTitleActions = leftTitle;
+        this.firstTitleAction = rightTitle;
+        this.secondTitleAction = leftTitle;
     }
 
 
@@ -232,8 +234,8 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
                             RelativeLayout.LayoutParams.WRAP_CONTENT);
             paramsRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
 
-            this.txtRightTitle.setLayoutParams(paramsLeft);
-            this.txtLeftTitle.setLayoutParams(paramsRight);
+            this.txtSecondTitle.setLayoutParams(paramsLeft);
+            this.txtFirstTitle.setLayoutParams(paramsRight);
         }
 
     }
@@ -242,8 +244,8 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.item_parent_view, this, true);
 
-        this.txtLeftTitle = view.findViewById(R.id.txt_left_title);
-        this.txtRightTitle = view.findViewById(R.id.txt_right_title);
+        this.txtFirstTitle = view.findViewById(R.id.txt_first_title);
+        this.txtSecondTitle = view.findViewById(R.id.txt_second_title);
         this.recyclerParentChild = view.findViewById(R.id.recycler_parent_child);
         linearLayoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, this.isRtlLayout);

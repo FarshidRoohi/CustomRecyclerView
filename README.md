@@ -10,7 +10,7 @@
  ###### via Gradle: 
 
 ```Gradle
-   implementation 'ir.farshid_roohi:customrecyclerview:0.1.1'
+   implementation 'ir.farshid_roohi:customrecyclerview:0.1.2'
 ```
 ###### or Maven:
  ```Maven
@@ -46,11 +46,11 @@
         final ItemParentView item3        = new ItemParentView(this);
         adapterThree.setItemListener(this);
         item3.setTitlesListener(this);
-        item3.setLeftTitle("title C");
-        item3.setRightTitle("more");
+        item3.setFirstTitle("title");
+        item3.setSecondTitle("more");
         item3.setVisibilityProgressBar(true);
         item3.setAdapter(adapterThree);
-        item3.setTitlesAction("action C", null);
+        item3.setTitlesAction("action", null);
 
         // Async add item example
         

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,10 +70,10 @@ public class ItemContainerAdapter extends RecyclerView.Adapter<ItemContainerAdap
         item.setTitleTextSize(this.titleSize);
 
 
-        holder.itemParent.setRightTitle(item.getTitleRight());
-        holder.itemParent.setLeftTitle(item.getTitleLeft());
+        holder.itemParent.setSecondTitle(item.getTitleSecond());
+        holder.itemParent.setFirstTitle(item.getTitleFirst());
         holder.itemParent.setAdapter(item.getAdapter());
-        holder.itemParent.setTitlesAction(item.getRightTitleActions(), item.getLeftTitleActions());
+        holder.itemParent.setTitlesAction(item.getFirstTitleAction(), item.getSecondTitleAction());
         holder.itemParent.setTitlesListener(item.getListener());
         holder.itemParent.setTitleColor(item.getTitleColor());
         holder.itemParent.setRtlLayout(item.getIsRtlLayout());
