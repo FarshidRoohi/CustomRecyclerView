@@ -1,11 +1,14 @@
 package farshid_roohi.ir.customrecyclerview.view.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import farshid_roohi.ir.customrecyclerview.R;
-import farshid_roohi.ir.customrecyclerview.view.utility.TextUtiliys;
 import farshid_roohi.ir.customrecyclerview.view.view.ItemParentView;
 
 public class ItemContainerAdapter extends RecyclerView.Adapter<ItemContainerAdapter.ViewHolder> {
@@ -55,8 +57,9 @@ public class ItemContainerAdapter extends RecyclerView.Adapter<ItemContainerAdap
         this.itemParentViewList.add(item);
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(this.context).inflate(R.layout.item_container_adapter, parent, false);
         return new ViewHolder(view);
     }
@@ -91,8 +94,14 @@ public class ItemContainerAdapter extends RecyclerView.Adapter<ItemContainerAdap
         this.titleColor = typedArray.getColor(R.styleable.ItemContainerView_titleColor, ContextCompat.getColor(this.context, R.color.color_text_tile_list));
         this.isTitleDirectionRtl = typedArray.getBoolean(R.styleable.ItemContainerView_titleDirectionRtl, false);
         this.titleSize = typedArray.getDimension(R.styleable.ItemContainerView_android_textSize, 12);
-        this.titleSize = TextUtiliys.pxToDp(this.titleSize, this.context);
+        this.titleSize = pxToDp(this.titleSize, this.context);
         typedArray.recycle();
+    }
+
+    private float pxToDp(float px, Context context) {
+        Resources      resources = context.getResources();
+        DisplayMetrics metrics   = resources.getDisplayMetrics();
+        return (px / ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
 

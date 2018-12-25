@@ -64,11 +64,6 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         this.initializeView();
     }
 
-    /**
-     * set adapter list parent view adapter
-     *
-     * @param adapter
-     */
     public void setAdapter(Adapter adapter) {
         this.adapter = adapter;
         this.recyclerParentChild.setAdapter(this.adapter);
@@ -94,11 +89,6 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         this.txtFirstTitle.setText(value);
     }
 
-    /**
-     * set title list color
-     *
-     * @param color
-     */
     public void setTitleColor(@ColorInt int color) {
         this.titleColor = color;
         if (this.txtSecondTitle == null || this.txtFirstTitle == null || color == 0) {
@@ -144,20 +134,12 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         this.txtSecondTitle.setTextSize(size);
     }
 
-    /**
-     * Adapter
-     *
-     * @return
-     */
+
     public Adapter getAdapter() {
         return this.adapter;
     }
 
-    /**
-     * to visibility progress bar load
-     *
-     * @param flag
-     */
+
     public void setVisibilityProgressBar(boolean flag) {
         this.isVisibilityProgress = flag;
     }
@@ -166,11 +148,6 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         return this.isVisibilityProgress;
     }
 
-    /**
-     * Click listener titles
-     *
-     * @param listener
-     */
     public void setTitlesListener(@Nullable final OnClickTitleListener listener) {
         this.listener = listener;
         if (this.listener == null) {
@@ -203,12 +180,7 @@ public class ItemParentView<Adapter extends RecyclerView.Adapter> extends Linear
         return this.listener;
     }
 
-    /**
-     * set action string
-     *
-     * @param rightTitle
-     * @param leftTitle
-     */
+
     public void setTitlesAction(@Nullable String rightTitle, @Nullable String leftTitle) {
         this.firstTitleAction = rightTitle;
         this.secondTitleAction = leftTitle;

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:gravity="center">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center">
 
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
@@ -17,8 +17,8 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/card_view"
-                android:layout_width="80dp"
-                android:layout_height="100dp"
+                android:layout_width="180dp"
+                android:layout_height="200dp"
                 android:layout_margin="5dp"
                 android:foreground="?attr/selectableItemBackground"
                 app:cardBackgroundColor="#F2F3F5"
@@ -33,18 +33,18 @@
                         android:id="@+id/img"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"/>
 
                     <TextView
                         android:id="@+id/txt_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="#51110022"
                         android:gravity="center"
                         android:shadowColor="#7c9b9b9b"
                         android:shadowDx="1"
-                        android:background="#51110022"
                         android:shadowDy="2"
-                        android:shadowRadius="3" />
+                        android:shadowRadius="3"/>
 
 
                 </RelativeLayout>
