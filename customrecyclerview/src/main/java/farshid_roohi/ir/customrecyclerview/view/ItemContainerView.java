@@ -1,9 +1,9 @@
-package farshid_roohi.ir.customrecyclerview.view.view;
+package farshid_roohi.ir.customrecyclerview.view;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +49,9 @@ public class ItemContainerView extends LinearLayout {
 
     public ItemContainerAdapter getContainerAdapter() {
         return this.containerAdapter;
+    }
+    public void notifyDataSetChanged(){
+        this.containerAdapter.notifyDataSetChanged();
     }
 
     private void initializeView() {

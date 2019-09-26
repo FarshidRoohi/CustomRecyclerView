@@ -1,7 +1,7 @@
 package farshid_roohi.ir.sample.customrecyclerview.sample;
 
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,20 +16,20 @@ import java.util.List;
 import farshid_roohi.ir.sample.customrecyclerview.R;
 
 
-public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    private List<ModelSample> list;
+    private List<Model> list;
 
-    public ChildAdapter(List<ModelSample> list) {
+    public Adapter(List<Model> list) {
         this.list = list;
     }
 
-    public ChildAdapter() {
+    public Adapter() {
         this.list = new ArrayList<>();
     }
 
 
-    public void addList(List<ModelSample> list) {
+    public void addList(List<Model> list) {
         this.list = list;
     }
 
@@ -44,7 +44,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ModelSample item = this.list.get(position);
+        Model item = this.list.get(position);
 
         holder.txtName.setText(item.getName());
         Picasso.get()
@@ -91,6 +91,6 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
     }
 
     public interface OnClickItemListener {
-        void onItemClickListener(ModelSample item);
+        void onItemClickListener(Model item);
     }
 }

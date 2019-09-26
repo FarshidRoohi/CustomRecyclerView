@@ -1,23 +1,25 @@
 package farshid_roohi.ir.sample.customrecyclerview.sample;
 
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import farshid_roohi.ir.customrecyclerview.view.ItemContainerView;
+import farshid_roohi.ir.customrecyclerview.view.ItemParentView;
 import farshid_roohi.ir.customrecyclerview.view.listener.OnClickTitleListener;
 import farshid_roohi.ir.sample.customrecyclerview.R;
-import farshid_roohi.ir.customrecyclerview.view.view.ItemContainerView;
-import farshid_roohi.ir.customrecyclerview.view.view.ItemParentView;
 
-public class MainActivity extends AppCompatActivity implements OnClickTitleListener, ChildAdapter.OnClickItemListener {
+public class MainActivity extends AppCompatActivity implements OnClickTitleListener, Adapter.OnClickItemListener {
 
-    private List<ModelSample> listOne;
-    private List<ModelSample> listTwo;
-    private List<ModelSample> listThree;
+    private List<Model> listOne;
+    private List<Model> listTwo;
+    private List<Model> listThree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +30,19 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
 
         final ItemContainerView itemContainerView = findViewById(R.id.item_container);
 
+        //adapters
+        Adapter adapterOne   = new Adapter(this.listOne);
+        Adapter adapterTwo   = new Adapter(this.listTwo);
+        final Adapter adapterThree = new Adapter();
+        adapterOne.setItemListener(this);
+        adapterTwo.setItemListener(this);
+        adapterThree.setItemListener(this);
+
+
         List<ItemParentView> itemParentViewList = new ArrayList<>();
 
         // populate item fake one
-        ChildAdapter         adapterOne = new ChildAdapter(this.listOne);
-        final ItemParentView item1      = new ItemParentView(this);
-        adapterOne.setItemListener(this);
+        final ItemParentView item1 = new ItemParentView(this);
         item1.setTitlesListener(this);
         item1.setSecondTitle("more");
         item1.setFirstTitle("title A");
@@ -43,9 +52,7 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
 
 
         // populate item fake two
-        ChildAdapter   adapterTwo = new ChildAdapter(this.listTwo);
-        ItemParentView item2      = new ItemParentView(this);
-        adapterTwo.setItemListener(this);
+        ItemParentView item2 = new ItemParentView(this);
         item2.setTitlesListener(this);
         item2.setFirstTitle("title B");
         item2.setSecondTitle("more");
@@ -53,9 +60,7 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         item2.setAdapter(adapterTwo);
 
         // populate item fake three
-        final ChildAdapter   adapterThree = new ChildAdapter();
-        final ItemParentView item3        = new ItemParentView(this);
-        adapterThree.setItemListener(this);
+        final ItemParentView item3 = new ItemParentView(this);
         item3.setTitlesListener(this);
         item3.setFirstTitle("title C");
         item3.setSecondTitle("more");
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
             public void run() {
                 adapterThree.addList(listThree);
                 item3.setVisibilityProgressBar(false);
-                itemContainerView.getContainerAdapter().notifyDataSetChanged();
+                itemContainerView.notifyDataSetChanged();
             }
         }, 3000);
 
@@ -91,23 +96,23 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
         this.listThree = new ArrayList<>();
 
 
-        this.listOne.add(new ModelSample(0, "A", imageUrl));
-        this.listOne.add(new ModelSample(0, "B", imageUrl));
-        this.listOne.add(new ModelSample(0, "C", imageUrl));
-        this.listOne.add(new ModelSample(0, "D", imageUrl));
-        this.listOne.add(new ModelSample(0, "E", imageUrl));
+        this.listOne.add(new Model(0, "A", imageUrl));
+        this.listOne.add(new Model(0, "B", imageUrl));
+        this.listOne.add(new Model(0, "C", imageUrl));
+        this.listOne.add(new Model(0, "D", imageUrl));
+        this.listOne.add(new Model(0, "E", imageUrl));
 
-        this.listTwo.add(new ModelSample(0, "1", imageUrl));
-        this.listTwo.add(new ModelSample(0, "2", imageUrl));
-        this.listTwo.add(new ModelSample(0, "3", imageUrl));
-        this.listTwo.add(new ModelSample(0, "4", imageUrl));
-        this.listTwo.add(new ModelSample(0, "5", imageUrl));
+        this.listTwo.add(new Model(0, "1", imageUrl));
+        this.listTwo.add(new Model(0, "2", imageUrl));
+        this.listTwo.add(new Model(0, "3", imageUrl));
+        this.listTwo.add(new Model(0, "4", imageUrl));
+        this.listTwo.add(new Model(0, "5", imageUrl));
 
-        this.listThree.add(new ModelSample(0, "!", imageUrl));
-        this.listThree.add(new ModelSample(0, "@", imageUrl));
-        this.listThree.add(new ModelSample(0, "#", imageUrl));
-        this.listThree.add(new ModelSample(0, "$", imageUrl));
-        this.listThree.add(new ModelSample(0, "%", imageUrl));
+        this.listThree.add(new Model(0, "!", imageUrl));
+        this.listThree.add(new Model(0, "@", imageUrl));
+        this.listThree.add(new Model(0, "#", imageUrl));
+        this.listThree.add(new Model(0, "$", imageUrl));
+        this.listThree.add(new Model(0, "%", imageUrl));
     }
 
     @Override
@@ -122,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements OnClickTitleListe
     }
 
     @Override
-    public void onItemClickListener(ModelSample item) {
+    public void onItemClickListener(Model item) {
         Toast.makeText(this, item.getName(), Toast.LENGTH_SHORT).show();
     }
 }

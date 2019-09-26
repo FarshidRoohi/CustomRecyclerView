@@ -29,7 +29,7 @@
 ### example: 
 
 ```XML
-        <farshid_roohi.ir.customrecyclerview.view.view.ItemContainerView
+        <farshid_roohi.ir.customrecyclerview.view.ItemContainerView
             android:id="@+id/item_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

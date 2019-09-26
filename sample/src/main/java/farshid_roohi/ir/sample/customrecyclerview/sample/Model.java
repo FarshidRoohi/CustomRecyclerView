@@ -1,13 +1,13 @@
 package farshid_roohi.ir.sample.customrecyclerview.sample;
 
 
-public class ModelSample {
+public class Model {
 
     private int    id;
     private String name;
     private String imageUrl;
 
-    public ModelSample(int id , String name , String imageUrl){
+    public Model(int id , String name , String imageUrl){
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;

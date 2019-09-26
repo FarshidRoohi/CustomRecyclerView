@@ -3,10 +3,10 @@ package farshid_roohi.ir.customrecyclerview.view.adapter;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import farshid_roohi.ir.customrecyclerview.R;
-import farshid_roohi.ir.customrecyclerview.view.view.ItemParentView;
+import farshid_roohi.ir.customrecyclerview.view.ItemParentView;
 
 public class ItemContainerAdapter extends RecyclerView.Adapter<ItemContainerAdapter.ViewHolder> {
 
