@@ -10,7 +10,7 @@
  ###### via Gradle: 
 
 ```Gradle
-   implementation 'ir.farshid_roohi:customrecyclerview:0.1.2'
+   implementation 'ir.farshid_roohi:customrecyclerview:0.1.3'
 ```
 ###### or Maven:
  ```Maven
